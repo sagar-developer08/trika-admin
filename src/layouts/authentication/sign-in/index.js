@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -45,6 +45,17 @@ function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  const navigate = useNavigate();
+
+  const reloadDashboardPage = () =>{
+
+    navigate("/dashboard");
+
+    window.scrollTo(0,0);
+    
+    window.location.reload();
+  };
 
   return (
     <BasicLayout image={bgImage}>
@@ -102,7 +113,7 @@ function Basic() {
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
+              <MDButton variant="gradient" color="info" fullWidth onClick={reloadDashboardPage}>
                 sign in
               </MDButton>
             </MDBox>
